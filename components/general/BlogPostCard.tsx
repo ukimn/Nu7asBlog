@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IappProps } from "@/data/types";
+
 export function BlogPostCard({ data }: IappProps) {
   return (
     <div className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:shadow-lg">

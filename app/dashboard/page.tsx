@@ -46,7 +46,7 @@ async function GetMyPosts() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {data.map((post) => (
-        <BlogPostCard data={post} key={post.id} />
+        <BlogPostCard data={post} key={post.id} deleteButton={true}/>
       ))}
     </div>
   );
