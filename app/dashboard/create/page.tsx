@@ -4,7 +4,6 @@ import { CardHeader, Card, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@radix-ui/react-label";
-import { Button } from "@/components/ui/button";
 import { createPost } from "@/app/actions";
 import { SubmitButton } from "@/components/general/Submitbutton";
 

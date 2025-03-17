@@ -1,4 +1,3 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { prisma } from "./utils/db";
 import { BlogPostCard } from "@/components/general/BlogPostCard";
 import { Suspense } from "react";

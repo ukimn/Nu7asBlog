@@ -4,7 +4,6 @@ import { prisma } from "../utils/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { BlogPostCard } from "@/components/general/BlogPostCard";
 import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 
 async function getData(UserId: string) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -19,12 +18,7 @@ async function getData(UserId: string) {
 
   return data;
 }
-export default async function Dashboard() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-
-  const data = await getData(user.id);
-
+export default function Dashboard() {
   return (
     <div>
       <div className="m-5">
@@ -35,11 +29,25 @@ export default async function Dashboard() {
           Create Post
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((post) => (
-            <BlogPostCard data={post} key={post.id}/>
-        ))}
-      </div>
+
+      <Suspense fallback={<h1>Please wait...</h1>}>
+        <GetMyPosts />
+      </Suspense>
+    </div>
+  );
+}
+
+async function GetMyPosts() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  const data = await getData(user.id);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {data.map((post) => (
+        <BlogPostCard data={post} key={post.id} />
+      ))}
     </div>
   );
 }
