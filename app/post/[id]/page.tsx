@@ -6,7 +6,6 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-
 } from "@/components/ui/card";
 import Image from "next/image";
 
