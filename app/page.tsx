@@ -3,6 +3,8 @@ import { BlogPostCard } from "@/components/general/BlogPostCard";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
+export const revalidate = 10;
+
 async function getPosts() {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   const posts = await prisma.blogPost.findMany({
